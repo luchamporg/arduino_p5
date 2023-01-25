@@ -1,37 +1,18 @@
-let pos;
-let vel;
-const diam = 50;
-const rad = diam / 2;
+let ball1;
+let ball2;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  pos = createVector(windowWidth / 2, windowHeight / 2);
-  vel = p5.Vector.random2D();
-  vel.setMag(random(2, 10));
+  ball1 = new Pelota();
+  ball2 = new Pelota();
 }
 
 function draw() {
-  vel.rotate(random(-0.2, 0.2));
-  pos.add(vel);
+  ball1.update();
+  ball1.display();
 
-  if (pos.x > windowWidth - rad) {
-    background(255, 50);
-    vel.x *= -1;
-  }
-  if (pos.x < rad) {
-    background(255, 50);
-    vel.x *= -1;
-  }
-  if (pos.y > windowHeight - rad) {
-    background(255, 50);
-    vel.y *= -1;
-  }
-  if (pos.y < rad) {
-    background(255, 50);
-    vel.y *= -1;
-  }
+  ball2.update();
+  ball2.display();
 
-  fill(100, 0, 200);
-  stroke(255, 100, 100, 100);
-  strokeWeight(10);
-  circle(pos.x, pos.y, diam);
+  //print(ball1.pos);
 }
