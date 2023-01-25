@@ -1,12 +1,18 @@
-let n = 45.3;
+const ball_count = 100;
+const ball_array = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  for (let i = 0; i < 10000; i++) {
-    n *= 1.001;
-    print(n);
+  for (let i = 0; i < ball_count; i++) {
+    let new_ball = new Pelota();
+    ball_array.push(new_ball);
   }
-  print("Se terminó el loop");
 }
 
-function draw() {}
+function draw() {
+  background(255, 10);
+  for (let i = 0; i < ball_count; i++) {
+    ball_array[i].display();
+    ball_array[i].update();
+  }
+}
